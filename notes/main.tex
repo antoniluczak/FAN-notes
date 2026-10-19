@@ -1,0 +1,115 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Page layout and mathematics ---
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools,amsthm}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems,breakable,skins}
+\usepackage{subfiles}
+\usepackage{hyperref}
+
+% --- Links ---
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  urlcolor=teal!45!black,
+  citecolor=green!35!black
+}
+
+% --- Muted colors for statement boxes ---
+\definecolor{TheoremFrame}{HTML}{526D91}
+\definecolor{TheoremBack}{HTML}{F4F7FB}
+\definecolor{LemmaFrame}{HTML}{5D8378}
+\definecolor{LemmaBack}{HTML}{F3F8F5}
+\definecolor{DefinitionFrame}{HTML}{A6814D}
+\definecolor{DefinitionBack}{HTML}{FBF7F0}
+\definecolor{ExampleFrame}{HTML}{a75353}
+\definecolor{ExampleBack}{HTML}{e6d4d4}
+
+% Shared numbering for theorems, lemmas, and definitions, within each section.
+\newtcbtheorem[number within=section]{theorem}{Theorem}{
+  enhanced,
+  breakable,
+  sharp corners,
+  boxrule=0.6pt,
+  colframe=TheoremFrame,
+  colback=TheoremBack,
+  colbacktitle=TheoremFrame!12!white,
+  coltitle=black,
+  fonttitle=\bfseries,
+  before skip=10pt plus 2pt,
+  after skip=10pt plus 2pt
+}{thm}
+
+\newtcbtheorem[use counter from=theorem]{lemma}{Lemma}{
+  enhanced,
+  breakable,
+  sharp corners,
+  boxrule=0.6pt,
+  colframe=LemmaFrame,
+  colback=LemmaBack,
+  colbacktitle=LemmaFrame!12!white,
+  coltitle=black,
+  fonttitle=\bfseries,
+  before skip=10pt plus 2pt,
+  after skip=10pt plus 2pt
+}{lem}
+
+\newtcbtheorem[use counter from=theorem]{definition}{Definition}{
+  enhanced,
+  breakable,
+  sharp corners,
+  boxrule=0.6pt,
+  colframe=DefinitionFrame,
+  colback=DefinitionBack,
+  colbacktitle=DefinitionFrame!12!white,
+  coltitle=black,
+  fonttitle=\bfseries,
+  before skip=10pt plus 2pt,
+  after skip=10pt plus 2pt
+}{def}
+
+\newtcbtheorem[use counter from=theorem]{example}{Example}{
+  enhanced,
+  breakable,
+  sharp corners,
+  boxrule=0.6pt,
+  colframe=ExampleFrame,
+  colback=ExampleBack,
+  colbacktitle=ExampleFrame!12!white,
+  coltitle=black,
+  fonttitle=\bfseries,
+  before skip=10pt plus 2pt,
+  after skip=10pt plus 2pt
+}{exm}
+
+% Problems have their own section-based numbering.
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}[section]
+
+% A proof-style environment with the heading "Solution" and a QED symbol.
+\newenvironment{solution}
+  {\begin{proof}[Solution]}
+  {\end{proof}}
+
+\setlength{\parindent}{0cm}
+
+% Small convenience commands (optional).
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+
+\title{Mathematical Notes}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\subfile{tex/lectures/lecture1.tex}
+
+\end{document}

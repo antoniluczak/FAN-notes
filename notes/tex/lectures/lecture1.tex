@@ -1,0 +1,54 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    \section{Introduction}
+
+    \begin{definition}{Holomorfic function}{def:holomorfic}
+        A function $f \colon \C \supseteq \Omega \to \C$ is \textit{holomorphic} 
+        if it is complex differentiable on $\omega$, meaning that for any
+        $z \in \Omega$
+        \begin{equation*}
+            f'(z) = \lim_{h \to 0} \frac{f(z + h) - f(z)}{h}
+        \end{equation*}
+        exists. Equivalently,
+        \begin{equation*}
+            f(z + h) = f(z) + h f'(z) + o(h).
+        \end{equation*}
+    \end{definition}
+
+    Equivalently, $f$ is differentiable as a function $\R \to \R$ and its
+    differential is a matrix of multiplication by a complex number
+    \begin{equation*}
+        \begin{bmatrix}
+            a  & b \\
+            -b & a
+        \end{bmatrix}
+    \end{equation*}
+    for some reals $a$, $b$. Writing this using partials, we get
+
+    \begin{definition}{Cauchy - Riemann equations}{def:cauchy-riemann}
+        Let $f$ be holomorphic and write $f(x + iy) = u(x, y) + i v(x, y)$. Then
+        \begin{equation*}
+            \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}
+            \text{ and }
+            \frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}.
+        \end{equation*}
+        TODO: $\frac{\partial}{\partial z}$, $\frac{\partial}{\partial \overline{z}}$.
+    \end{definition}
+    
+    \begin{lemma}{Closedness of $f dz$}{lem:closedness-dz}
+        Let $dz = dx + i dy$. Then $f$ is holomorphic iff the form $f dz$ is closed, meaning
+        \begin{equation*}
+            d(f dz) = 0.
+        \end{equation*}
+    \end{lemma}
+
+    All arithmetic properties are the same as for reals.
+
+    \begin{example}{Some holomorphic functions}{exm:holomorfic:fns}
+        Any polynomial, convergent power series (not proven yet), $\exp$,
+        all trigonometric functions outside their poles. $\sin$ and $\cos$
+        are unbounded for large $y$ and $\tan$ is bounded for large $y$.  
+    \end{example}
+    
+\end{document}
