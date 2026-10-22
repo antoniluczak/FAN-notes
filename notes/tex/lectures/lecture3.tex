@@ -1,0 +1,118 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    \section{Extremes, Analytic functions, Series}
+
+    \subsection{Extremes}
+
+  \begin{theorem}{Extremes of holomorphic functions}{thm:ext}
+    $\Omega$ connected and bounded, $f$ holomorphic on $\Omega$. Then $|f|$ 
+    does not have local extremes unless it is constant.
+  \end{theorem}
+
+  \begin{proof}[For nondegenerate extremes]
+     $f(z) = u(x,y) + i v(x,y)$. $|f|^2 = f \cdot \overline{f} = 
+     u^2 + v^2 = g$. $Dg = 0$ and $D^2g$ can't be negatively-definite.
+
+    \begin{equation*}
+      g_x = \frac{\partial}{\partial x}(u^2 + v^2) = 2uu_x + 2vv_x   
+    \end{equation*}
+
+    \begin{equation*}
+      g_y = \frac{\partial}{\partial y} (u^2 + v^2) = 2uu_y + 2vv_y.
+    \end{equation*}
+
+    If $(g_x, g_y) = (0, 0)$ then $(u, v) = 0$ or from Cauchy Riemann %FIX REF
+    \begin{equation*}
+      \det \begin{bmatrix}
+        u_x & v_x \\
+        u_y & v_y
+      \end{bmatrix} = 0
+      \implies u_x = v_x = u_y = v_y = 0 \implies f'(x) = 0
+    \end{equation*}
+
+    \begin{equation*}
+      \operatorname{tr} D^2g = g_{xx} + g_{yy} = 2u(u_{xx} + u_{uu}) + 2v(v_{xx} 
+      + v_{yy}) = 0,
+    \end{equation*}
+    which is a contradiction.
+  \end{proof}
+
+  \begin{proof}
+    Take a circle $\gamma$ around the point maximizing $|f|$:
+    \begin{equation*}
+      f(z_0) = \frac{1}{2 \pi i} \int_\gamma \frac{f(w)}{w - z_0} dw = 
+      \frac{1}{2 \pi} \int_{0}^{2\pi} f(z_0 + re^{it})
+    \end{equation*}
+
+  This is the average of $f$ along $\gamma$, and we get
+  \begin{equation*}
+    |f(z_0)| \leqslant \max_{z \in \gamma} |f(z)|.
+  \end{equation*}
+  But from maximality, $|f|$ must be constantly equal $|f(z_0)|$ on $\gamma$.
+  Analogously, it is constant inside any circle (contained in $\Omega$) 
+  around $z_0$. By some standard topology i is constant everywhere as
+  $\Omega$ is open and connected.
+
+\end{proof}
+
+  \subsection{Analytic functions and Series}
+
+  \begin{theorem}{Holomorphic $\implies$ Analytic}{thm:analytic}
+    Any holomorphic function is analytic.
+  \end{theorem}
+
+  \begin{proof}
+  Take a circle $\gamma$ around $z_0$, $w \in \gamma$. For $z$ in the interior
+  of $\gamma$ (to make the series converge), we have
+    \begin{equation*}
+      \frac{1}{w - z} = \frac{1}{w - z_0} \sum_{n = 0}^\infty 
+      \left(\frac{z - z_0}{w - z_0}\right)^n,
+    \end{equation*} 
+
+    hence
+
+    \begin{gather*}
+      f(z) = \frac{1}{2 \pi i} \int_\gamma f(w) \sum_{n = 0}^\infty 
+      \frac{(z - z_0)^n}{(w - z_0)^{n+1}} dw = \\
+      \sum \frac{f^{(n)}(z_0)}{n!}(z - z_0)^n.
+    \end{gather*}
+    We can exchange integration with summation, since the inside is uniformly
+    convergent on a compact set.
+  \end{proof}
+
+  Corollary: if $f$ is analytic around $0$, then 
+  \begin{equation*}
+    f(w) = \sum a_n (z - z_0)^n
+  \end{equation*}
+  where $|a_n| < \frac{M}{R^n}$ for an upper bound $M$ of $|f|$ inside the
+  considered disk. Note that $R$ can be taken to be maximal possible.
+  Consider $\arctan$. Its convergence radius at $0$ is $1$, so it can't extend
+  to an entire function. In this case, it has poles at $\pm i$.
+  
+  \begin{theorem}{Analytic $\implies$ Holomorphic}{thm:anal-holo}
+    Any analytic function is holomorphic.
+  \end{theorem}
+  \begin{proof}
+    This is a standard bound-bash. The same argument as for real analytic functions.
+  \end{proof}
+
+  \begin{lemma}{Hadamard lemma}{lem:hadamard}
+    $f \colon \R \to \R$. $f(0) = 0$. If $f \in C^k$, then $\exists g \in C^{k-1}$
+    such that $f(x) = xg(x)$. 
+  \end{lemma}
+
+  \begin{proof}
+    \begin{equation*}
+      f(x) = \int_0^1 \frac{d}{dt}f(xt)dt = \int_0^1 xf'(xt)dt = x \int_0^1f'(xt)dt
+    \end{equation*}
+  \end{proof}
+
+  % Difference between $\frac{d}{dx}$ and $\frac{\partial}{\partial x}$.
+
+  \begin{theorem}{degree of vanishing}{thm:vanishing}
+    $f$ can be uniquely written as $z^ng(z)$ where $n \geqslant 0$.
+  \end{theorem}
+
+  
+\end{document}
